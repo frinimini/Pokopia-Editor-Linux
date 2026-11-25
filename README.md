@@ -4,27 +4,194 @@
 
 # Pokopia Editor for Linux
 
-**Edit your Pokopia save: bag, residents, moves, emotes, wardrobe, collection and your islands. Install game mods.**
+**An independently maintained Linux fork with AppImage releases and additional map-editing tools.**
 
 ![Linux](https://img.shields.io/badge/Linux-x86__64-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Linux version](https://img.shields.io/badge/Linux_release-1.1.0-2ecc71?style=for-the-badge)
 ![Pokopia](https://img.shields.io/badge/Pokopia-2.0.x-e74c3c?style=for-the-badge)
-
-<img src="docs/screenshots/island-map.png" width="49%" alt="The Island Map editor">
-<img src="docs/charizard_fly.gif" width="49%" alt="Play as Pokemon: flying around town as Charizard">
 
 </div>
 
----
+Maintained by **[frinimini](https://github.com/frinimini/Pokopia-Editor-Linux)**.
+Built on **[Pokopia Editor by cycalo and contributors](https://github.com/cycalo/Pokopia-Editor)**,
+upstream version **1.9.2**. The original editor remains credited separately from
+this fork's Linux integration and additional features. See [credits and licenses](CREDITS.md).
 
-## 🚀 Getting started
+[Download Linux 1.1.0](https://github.com/frinimini/Pokopia-Editor-Linux/releases/tag/linux-v1.1.0) ·
+[Linux additions](#linux-port-and-additional-features) ·
+[Screenshots](#screenshots-of-the-linux-edition) ·
+[Upstream features](#upstream-editor-features) ·
+[Contributing](CONTRIBUTING.md)
 
-Linux port version **1.1.0**, based on upstream editor **1.9.2**.
+## Download and run on Linux
 
-This is the Linux port maintained by [frinimini](https://github.com/frinimini/Pokopia-Editor-Linux),
-based on [cycalo/Pokopia-Editor](https://github.com/cycalo/Pokopia-Editor).
-See [credits and licenses](CREDITS.md) and [contribution guidelines](CONTRIBUTING.md).
+Download **PokopiaEditor-1.1.0-x86_64.AppImage** from
+[our Linux release](https://github.com/frinimini/Pokopia-Editor-Linux/releases/tag/linux-v1.1.0), then:
 
-Run from source on Linux with Python 3 and venv support installed.
+```sh
+chmod +x PokopiaEditor-1.1.0-x86_64.AppImage
+./PokopiaEditor-1.1.0-x86_64.AppImage
+```
+
+Built and tested on **Ubuntu 26.10 x86_64**, requiring **glibc 2.44**.
+Older distributions are unverified. If FUSE is unavailable, use:
+
+```sh
+./PokopiaEditor-1.1.0-x86_64.AppImage --appimage-extract-and-run
+```
+
+Close the emulator before editing its on-disk save. Choose **Open → Browse for a
+folder** to open an emulator or Recompia save; it contains `G00/CMNDAT.BIN`.
+Keep a backup and use **Save copy** when trying edits. **F5** reloads an in-game save.
+The release includes source, dependency notices, a manifest and checksums.
+See [1.1.0 release notes](docs/releases/1.1.0.md).
+
+## Linux port and additional features
+
+These additions are maintained in this fork by frinimini. The underlying save
+editor, original map tools, Item Catalog and game mods come from upstream.
+
+| Addition in this fork | What it provides |
+|---|---|
+| Linux desktop integration | AppImage packaging, XDG settings, system folder opening, emulator detection and bundled toolbar icons |
+| Experimental Linux live editing | Launch Lichii through the editor and change forms while playing the verified game build |
+| Height-layer inspector | Inspect terrain bands and objects grouped by Y height, then reveal a level |
+| Tile contents and catalog icons | Open a tile's contents in an icon grid using the existing catalog assets and block-to-item mapping |
+| Brush shapes and dimensions | Circle, Square and Rectangle brushes, independent width/depth and cell counts |
+| Rectangle height and paint actions | Shift-drag an area, then release to apply the chosen action |
+| Objects lifted with terrain | Optionally move obstructing placed items and their stacks upward when raising ground |
+| Painting underlying terrain | Optionally paint existing terrain beneath the visible surface in one action |
+| Glowing Block markers | Display saved treasure positions, including buried spots; unopened rewards remain unknown |
+| Remembered tool settings | Restore tool choices, filters, brush settings, height options and map view |
+| Spacebar focus fix | Space-drag pans even after changing a sidebar control |
+
+## Screenshots of the Linux edition
+
+Screenshots use demo labels and hide local save paths. Click an image to open it at full size.
+
+| | |
+|---|---|
+| **[Island Map overview](#inspect-stacked-height-layers)**<br>[<img src="docs/screenshots/linux/01-island-map.png" width="440" alt="Island Map overview">](docs/screenshots/linux/01-island-map.png)<br>Explore terrain, objects, habitats and homes. | **[Height layers](#inspect-stacked-height-layers)**<br>[<img src="docs/screenshots/linux/02-height-layers.png" width="440" alt="Height layers">](docs/screenshots/linux/02-height-layers.png)<br>Inspect objects and terrain grouped by Y height. |
+| **[Tile contents](#tile-contents-and-catalog-icons)**<br>[<img src="docs/screenshots/linux/03-tile-contents.png" width="440" alt="Tile contents">](docs/screenshots/linux/03-tile-contents.png)<br>Open a tile stack and choose an entry by its icon and height. | **[Height rectangles and object lifting](#raising-ground-beneath-objects)**<br>[<img src="docs/screenshots/linux/04-height-rectangle-lift.png" width="440" alt="Height rectangles and object lifting">](docs/screenshots/linux/04-height-rectangle-lift.png)<br>Shift-drag an area; optionally lift obstructing placed objects. |
+| **[Paint rectangles and underlying layers](#painting-rectangles-and-terrain-layers)**<br>[<img src="docs/screenshots/linux/05-paint-rectangle-layers.png" width="440" alt="Paint rectangles and underlying layers">](docs/screenshots/linux/05-paint-rectangle-layers.png)<br>Shift-drag to paint an area; optionally include terrain below. | **[Glowing Blocks](#glowing-blocks)**<br>[<img src="docs/screenshots/linux/06-glowing-blocks.png" width="440" alt="Glowing Blocks">](docs/screenshots/linux/06-glowing-blocks.png)<br>Find saved treasure positions, including buried spots. |
+| **[Square and rectangle brushes](#map-brush-shapes)**<br>[<img src="docs/screenshots/linux/07-square-brush.png" width="440" alt="Square and rectangle brushes">](docs/screenshots/linux/07-square-brush.png)<br>Choose a footprint and dimensions with an exact cell count. | **[Item Catalog icons](#upstream-editor-features)**<br>[<img src="docs/screenshots/linux/08-item-catalog.png" width="440" alt="Item Catalog icons">](docs/screenshots/linux/08-item-catalog.png)<br>Browse item icons, including the terrain used in the map inspector. |
+
+## Using the Linux additions
+
+The following controls extend the inherited Island Map editor. Each heading links
+to a specific feature; ordinary save editing and mod instructions are in the
+[upstream editor guide](docs/upstream-guide.md).
+
+### Map brush shapes
+
+Paint ground and Ground height support Circle, Square and Rectangle brushes.
+Choose the shape in the tool panel and set the width in cells. Rectangle also
+allows an independent depth. Each dimension supports 1–32 cells. The panel shows
+the footprint count, for example 8 × 4 = 32 cells. Height labels and the map outline
+follow that footprint. Terrain rules can skip cells that cannot be edited.
+Paint and height tools keep separate brush settings. The bracket keys adjust width.
+
+### Inspect stacked height layers
+
+The Height layers panel sits below the island selector. With Select active, click a
+map cell to list its placed objects and contiguous terrain bands, grouped by their
+top Y height. Entries show their full vertical range and whether they are hidden or
+partly visible at the current cutoff. The inspected cell is outlined on the map.
+
+Click an entry to reveal its height and select its object. Lower level and Higher
+level move between occupied heights at that cell. Show all heights restores the
+complete view. The slider and roof-picking shortcut remain available for cutaway
+viewing. Visibility switches are grouped separately under Map overlays.
+
+These controls change the view and selection. Viewing different heights does not
+change save data. The groups describe occupied Y heights.
+
+### Tile contents and catalog icons
+
+Terrain entries in Height layers use the Item Catalog icon through the existing
+block-to-item ID mapping. Terrain without a catalog item uses a texture thumbnail. Click the
+stack badge beside an inspected tile to open its contents as an icon grid. Filter
+by Y height and select an object to return to the map with that object selected.
+Terrain entries reveal their height and clear the previous object selection.
+
+### Raising ground beneath objects
+
+Ground height has a **Move objects and placed items up** option. When enabled,
+Raise and the raising part of Flatten lift obstructing objects and their stacks
+onto the new surface, preserving their horizontal positions. The choice is remembered.
+Terrain and object movement undo together. A blocked destination cancels the stroke.
+Lowering leaves objects in place. Loose dropped collectibles and Glowing Blocks
+are not moved by this option.
+
+### Rectangular height edits
+
+With Ground height selected, **Shift + drag** marks a rectangle. Release to apply
+the selected Raise, Lower or Flatten mode to every cell in it. Esc cancels before
+release. The object-lifting option applies, and the rectangle is one undo step.
+
+### Painting rectangles and terrain layers
+
+In **Paint ground**, **Shift + drag** paints a rectangle on release (Esc cancels).
+Enable **Paint all terrain layers below** to paint the surface and existing terrain
+beneath it with the chosen block. Bedrock, liquids, empty spaces, objects and
+buried building blocks are preserved. The checkbox is remembered; brush strokes
+and rectangles each undo as one action. Height limits restrict painting to the
+visible surface and terrain below it.
+
+### Panning with the spacebar
+
+Hold **Space + drag** over the map to pan with any tool, including Ground height,
+even after using sidebar controls. Release Space to resume editing.
+
+### Remembered tool preferences
+
+The editor restores the last page, tool choices, map brushes, height options,
+visibility switches, map zoom and position for the last save, search filters,
+item-browser category/layout, mod selections and photo position. Preferences are
+saved when changing pages and closing the editor. Existing settings are supported.
+
+### Glowing Blocks
+
+Map overlays includes a Glowing Blocks switch. Gold stars mark saved treasure
+positions, including buried spots. Clicking a marker inspects that tile; its Height
+layers group and contents dialog include a read-only Glowing Block entry at its Y
+height. Selecting the entry reveals its height without selecting an editable object.
+
+The position table was checked against an in-game spot at X 1006, Y 36, Z 1137 using
+three backed-up states. Breaking the block cleared that position. Collecting the
+resulting disc left the position cleared. Other markers still need in-game testing.
+Reward types and the table's additional fields remain undecoded. Marker display
+uses the saved state, so reload after an in-game save to refresh it.
+
+## Linux live memory editing
+
+On the Mods page, use **Launch emulator** to select the Lichii AppImage, then open
+Pokopia and load into the world. Keep the editor open during the session.
+Launching the emulator through the editor allows
+memory access under the usual Linux parent-process ptrace policy. If the emulator
+was started independently and access is denied, close it and relaunch through the editor.
+Other system restrictions can still prevent attachment.
+
+Install Play as Pokemon, enable it in the emulator's game Properties → Add-Ons, and
+restart the game before using Transform. The editor verifies the supported game
+code hash and the installed patch before changing forms. The supported build is
+Pokopia 2.0.0, update 655360. Other emulator memory layouts may need further work.
+
+Manual gameplay verification on November 24, 2026 confirmed live transformation
+to Pikachu in Lichii on Ubuntu 26.10 using the AppImage. The emulator was launched
+through the editor. This does not establish compatibility with every form, emulator or game state.
+
+Linux backend tests use a controlled child process to check attachment, memory
+reads/writes, transformation fields, return-to-character fields and rejection of a
+mismatched build. Save editing tests use a backed-up copy of a real save. Keep a
+backup before testing mods in the game.
+
+## Linux settings and source build
+
+Settings use `$XDG_CONFIG_HOME/pokopia-editor/settings.json`, defaulting to
+`~/.config/pokopia-editor/settings.json`. Backups use `~/Documents/Pokopia_Save_Backups`.
+
+To run this fork from source, install Python 3 with venv support:
 
 ```sh
 git clone https://github.com/frinimini/Pokopia-Editor-Linux.git
@@ -34,193 +201,7 @@ python3 -m venv .build-venv
 .build-venv/bin/python pokopia_gui.py
 ```
 
-Close your emulator before opening a save. The editor searches standard Linux emulator
-save locations. Use **Open → Browse for a folder** to select a save manually, including
-Recompia saves. The save folder contains `G00/CMNDAT.BIN`.
-
-Download the [Linux AppImage v1.1.0](https://github.com/frinimini/Pokopia-Editor-Linux/releases/tag/linux-v1.1.0).
-See [v1.1.0 features and instructions](docs/releases/1.1.0.md) for the new controls.
-See [AppImage build instructions](#linux-build) to build it yourself.
-The AppImage has been built and tested on Ubuntu 26.10 x86_64 and requires glibc 2.44.
-GUI startup, all 12 pages with a real save copy, and 11 save round-trip/edit checks passed.
-Older distributions have yet to be verified. The release includes checksums, source code and bundled dependency notices.
-
-Linux support includes folder opening, XDG settings, emulator process detection and
-bundled toolbar icons. Experimental Linux live memory editing supports the verified
-Pokopia 2.0.0 build in Lichii. See [Linux live memory editing](#linux-live-memory-editing).
-
-Upstream Windows builds are available from
-[cycalo's releases](https://github.com/cycalo/Pokopia-Editor/releases/latest).
-
----
-
-## ✨ What you can do
-
-| | Page | |
-|:-:|---|---|
-| 🏠 | **Overview** | Rename your player, see your stats, and use one-click actions: max friendship, learn every emote, unlock the wardrobe |
-| 🎒 | **Bag** | Drag items into your bag, swap slots, copy with Ctrl, set amounts |
-| 📖 | **Item Catalog** | Browse and search every item by category, then double-click to add it. Expansion Pass and event items are tagged and can be filtered |
-| 💛 | **Residents** | Set friendship, see when you met each resident, and find their home on the map |
-| ✨ | **Moves & Emotes** | Learn or unlearn with a click, then set up your move and emote wheels |
-| 👕 | **Wardrobe** | Unlock any outfit or hairstyle, or all of them at once, including the Expansion Pass ones |
-| ⭐ | **Collection** | Complete the Pokédex, Habitat Dex, recipes, item list, Human Records, Ancient Artifacts, Highlight Reel, and photo frames and filters, one at a time or all at once. Turn on upgrades and set your Life Coins |
-| 🗺️ | **Island Map** | Edit your islands: move, place and delete objects, paint paths, raise or flatten the ground, and build any of 252 habitats in one click. Export as PNG |
-| 📷 | **Photos** | Browse your in-game album and export full-size photos |
-| 🛟 | **Backups** | Make, compare, restore and delete backups |
-| 🧩 | **Mods** | Install game mods: Play as Pokemon, Unlimited Crafting Storage Range |
-
-<table>
-  <tr>
-    <td><img src="docs/screenshots/island-map.png" alt="Island Map"></td>
-    <td><img src="docs/screenshots/wardrobe.png" alt="Wardrobe"></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Island Map</b></td>
-    <td align="center"><b>Wardrobe</b></td>
-  </tr>
-  <tr>
-    <td><img src="docs/screenshots/residents.png" alt="Residents"></td>
-    <td><img src="docs/screenshots/moves.png" alt="Moves & Emotes"></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Residents</b></td>
-    <td align="center"><b>Moves & Emotes</b></td>
-  </tr>
-  <tr>
-    <td><img src="docs/screenshots/catalog.png" alt="Item Catalog"></td>
-    <td><img src="docs/screenshots/collection.png" alt="Collection"></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Item Catalog</b></td>
-    <td align="center"><b>Collection</b></td>
-  </tr>
-</table>
-
----
-
-## 🧩 Mods
-
-<img src="docs/transform_demo.gif" width="600" alt="Turning into Mewtwo, Lugia, Heracross and Flareon, then back into the player">
-
-### Play as Pokemon <sub>(experimental)</sub>
-
-Turn into any Pokémon in Pokopia. Use their abilities: flying Pokémon can fly, and Grow, Burn, Water and Generate Pokémon can use their ability. Works in co-op / Link Play: every player needs the mod installed.
-
-1. On the editor's **Mods** page, press **Install**.
-2. Restart the game and tick **Play as Pokemon** in its Properties → Add-Ons.
-3. In the game, press **ZL + L3**. To choose the Pokémon, pick one on the Mods page and press **Transform**, or use ZL + D-pad.
-
-| Press | Does |
-|---|---|
-| **ZL + L3** (left stick click) | Transform; press again to turn back |
-| **ZL + D-pad Left / Right** | Previous / next Pokémon |
-| **ZR** as a flying Pokémon | Take off, hold to rise |
-| **ZL** while flying | Descend; hold on the ground to land |
-| **ZL + ZR** while flying | Drop out of the air |
-| **ZR** (Pokémon that can't fly) or **ZL + D-pad Down** | Use the Pokémon's ability: Grow, Burn, Water or Generate |
-| **A** | Open doors, craft, open boxes and the bag, pick things up and build, as a Pokémon too |
-
-- **Only for Pokopia 2.0.0** (update 655360).
-- **Transform** on the Mods page needs the emulator on the same PC. On a console, pick the Pokémon before installing.
-- **Experimental forms**, below the Pokémon list, turn you into things like the Master Ball.
-
-**Without the editor:** `z-PlayAsPokemon-emulator-<version>.zip` from the [latest release](https://github.com/cycalo/Pokopia-Editor/releases/latest) (unzip into the emulator's `load` folder) or `z-PlayAsPokemon-SD-card-<version>.zip` (Atmosphère, untested). You start as Ditto; [how to start as another Pokémon](mods/play-as-pokemon/README-standalone.md#change-the-pokémon).
-
-**Recompia:** copy `recompia_play_as_pokemon-1.7.1.pkmod` into Recompia's `mods` folder. F3 or ZL + R3 opens the Pokémon list; ZR or ZL + D-pad Down uses the Pokémon's ability (Grow, Burn, Water, Generate). [Install steps](recompia/play-as-pokemon/README.md).
-
-If the camera judders while flying, turn off Running jump keeps speed (Settings > Game > Gameplay).
-
-More details: [mods/play-as-pokemon](mods/play-as-pokemon/).
-
-### Unlimited Crafting Storage Range
-
-Crafting stations use the items in every storage box, chest and crate you have placed, at any distance, not only the boxes right next to them. No buttons.
-
-1. On the editor's **Mods** page, press **Install**.
-2. Restart the game and tick **Unlimited Crafting Storage Range** in its Properties → Add-Ons.
-
-- **Only for Pokopia 2.0.0** (update 655360). Works together with Play as Pokemon.
-- Not tested in multiplayer.
-
-**Without the editor:** `z-UnlimitedCraftingStorageRange-emulator-<version>.zip` from the [latest release](https://github.com/cycalo/Pokopia-Editor/releases/latest) or `z-UnlimitedCraftingStorageRange-SD-card-<version>.zip` (Atmosphère, untested).
-
-**Recompia:** copy `recompia_unlimited_crafting_storage_range-1.0.0.pkmod` into Recompia's `mods` folder. Windows and Linux. [Install steps](recompia/unlimited-crafting-storage-range/README.md).
-
-More details: [mods/unlimited-crafting-storage-range](mods/unlimited-crafting-storage-range/).
-
----
-
-## 🛡️ Your save is safe
-
-- 💾 **Automatic backup** before every save, in `Documents\Pokopia_Save_Backups`
-- 👀 **See every change** before it's written
-- ↩️ **Undo / redo** everything, or restore any backup from the Backups page
-- ⚠️ **Emulator check**: you get a warning if the emulator is still running
-- 🔄 If the game saves while the editor is open, press **F5** to reload
-
----
-
-## ⌨️ Shortcuts
-
-| Keys | Action | | Keys | Action |
-|---|---|---|---|---|
-| `Ctrl+O` | Open a save | | `Ctrl+Z` | Undo |
-| `Ctrl+S` | Save | | `Ctrl+Y` | Redo |
-| `Ctrl+F` | Search | | `F5` | Reload |
-| `Ctrl+1`–`9` | Switch page | | | |
-
----
-
-<details>
-<summary><b>🛠️ Windows source build</b></summary>
-
-<br>
-
-Requires Python 3.
-
-```bash
-py -m pip install PySide6-Essentials pillow
-py pokopia_gui.py
-```
-
-Command line tool: `py pokopia_cli.py --help`
-
-Build the exe:
-
-```bash
-py -m pip install pyinstaller
-py -m PyInstaller PokopiaEditor.spec --noconfirm
-```
-
-The exe stores its settings in `%APPDATA%\Pokopia Editor`.
-
-</details>
-
-<div align="center">
-<sub>Save edditor built with data from <a href="https://github.com/berichan/PokoHex">PokoHex</a>
-</div>
-<div align="center">
-<sub>Released under the <a href="LICENSE">GNU General Public License v3.0</a>. Pokémon names, icons and other game assets belong to Nintendo, Game Freak and The Pokémon Company. Fan-made tool, not affiliated with them.</sub>
-</div>
-
-## Linux build
-
-The Linux port supports save editing, maps, photos, backups and mod installation.
-Linux live emulator memory editing is experimental and uses the same build and patch verification as Windows.
-Recompia saves can be opened by browsing to their folder on Linux.
-
-Run the x86_64 AppImage with:
-
-```sh
-chmod +x PokopiaEditor-*-x86_64.AppImage
-./PokopiaEditor-*-x86_64.AppImage
-```
-
-If FUSE is unavailable, run it with `--appimage-extract-and-run`.
-Settings are stored in `$XDG_CONFIG_HOME/pokopia-editor/settings.json`, defaulting to
-`~/.config/pokopia-editor/settings.json`. Backups use `~/Documents/Pokopia_Save_Backups`.
-Close the game before editing its save.
+### Linux build
 
 To build on x86_64 Linux, install Python 3 with venv support and
 [appimagetool](https://github.com/AppImage/appimagetool/releases), then run:
@@ -253,104 +234,50 @@ License: `data/fonts/LICENSE-FluentSystemIcons.txt`.
   specialties as unimplemented. The reported move-wheel issue above requires
   separate investigation.
 
-## Linux live memory editing
+- Glowing Block rewards and additional position-table fields are undecoded.
+- Object lifting excludes loose drops and Glowing Blocks; lowering leaves objects in place.
+- Painting all layers replaces terrain resources such as ore. It preserves bedrock,
+  water, air, objects and buried building blocks. Try it on a save copy first.
 
-On the Mods page, use **Launch emulator** to select the Lichii AppImage, then open
-Pokopia and load into the world. Keep the editor open during the session.
-Launching the emulator through the editor allows
-memory access under the usual Linux parent-process ptrace policy. If the emulator
-was started independently and access is denied, close it and relaunch through the editor.
-Other system restrictions can still prevent attachment.
+## Upstream editor features
 
-Install Play as Pokemon, enable it in the emulator's game Properties → Add-Ons, and
-restart the game before using Transform. The editor verifies the supported game
-code hash and the installed patch before changing forms. The supported build is
-Pokopia 2.0.0, update 655360. Other emulator memory layouts may need further work.
+The following capabilities were created by **cycalo and upstream contributors**
+and are inherited by this fork. The Linux additions above build on that work.
 
-Manual gameplay verification on November 24, 2026 confirmed live transformation
-to Pikachu in Lichii on Ubuntu 26.10 using the AppImage. The emulator was launched
-through the editor. Return-to-character and other forms remain to be verified in-game.
+| Upstream page | Inherited capabilities |
+|---|---|
+| Overview | Player information, rename tools and one-click unlock actions |
+| Bag and Item Catalog | Inventory editing, item search, icons, categories and quantities |
+| Residents | Friendship, meeting information and resident homes |
+| Moves and Emotes | Learned actions and move/emote wheels |
+| Wardrobe | Outfits, hairstyles and expansion content |
+| Collection | Pokédex, Habitat Dex, recipes, records, artifacts and other collections |
+| Island Map | Place, move and delete objects; edit terrain and paths; create habitats; export maps |
+| Photos | Browse the in-game album and export images |
+| Backups | Create, compare, restore and delete backups |
+| Mods | Play as Pokemon and Unlimited Crafting Storage Range |
 
-Linux backend tests use a controlled child process to check attachment, memory
-reads/writes, transformation fields, return-to-character fields and rejection of a
-mismatched build. Save editing tests use a backed-up copy of a real save. Keep a
-backup before testing mods in the game.
+For the original page descriptions, mod installation, controller combinations,
+shared shortcuts and Windows source-build instructions, read the
+[upstream editor and mod guide](docs/upstream-guide.md).
+Original Windows downloads remain at [cycalo's releases](https://github.com/cycalo/Pokopia-Editor/releases/latest).
 
-## Map brush shapes
+## Credits, licensing and contributions
 
-Paint ground and Ground height support Circle, Square and Rectangle brushes.
-Choose the shape in the tool panel and set the width in cells. Rectangle also
-allows an independent depth. Each dimension supports 1–32 cells. The panel shows
-the footprint count, for example 8 × 4 = 32 cells. Height labels and the map outline
-follow that footprint. Terrain rules can skip cells that cannot be edited.
-Paint and height tools keep separate brush settings. The bracket keys adjust width.
+- **Original editor and mods:** cycalo and upstream contributors.
+- **Linux integration and fork additions:** frinimini, developed with assistance
+  from OpenAI Codex.
+- **Save data and research credited upstream:** [PokoHex](https://github.com/berichan/PokoHex).
+- **Third-party components:** their existing notices and ownership are preserved;
+  see [CREDITS.md](CREDITS.md) and [dependency source information](packaging/SOURCES.md).
 
-## Inspect stacked height layers
+This fork remains under **[GNU GPLv3](LICENSE)**. Its Linux branding does not
+transfer ownership of upstream code or third-party material. Pokémon names,
+icons and game assets belong to their respective rights holders, including
+Nintendo, Game Freak and The Pokémon Company. This is a fan-made tool, unaffiliated
+with them.
 
-The Height layers panel sits below the island selector. With Select active, click a
-map cell to list its placed objects and contiguous terrain bands, grouped by their
-top Y height. Entries show their full vertical range and whether they are hidden or
-partly visible at the current cutoff. The inspected cell is outlined on the map.
-
-Click an entry to reveal its height and select its object. Lower level and Higher
-level move between occupied heights at that cell. Show all heights restores the
-complete view. The slider and roof-picking shortcut remain available for cutaway
-viewing. Visibility switches are grouped separately under Map overlays.
-
-These controls change the view and selection. Viewing different heights does not
-change save data. The groups describe occupied Y heights.
-
-## Remembered tool preferences
-
-The editor restores the last page, tool choices, map brushes, height options,
-visibility switches, map zoom and position for the last save, search filters,
-item-browser category/layout, mod selections and photo position. Preferences are
-saved when changing pages and closing the editor. Existing settings are supported.
-
-Terrain entries in Height layers use the Item Catalog icon through the existing
-block-to-item ID mapping. Terrain without a catalog item uses a texture thumbnail. Click the
-stack badge beside an inspected tile to open its contents as an icon grid. Filter
-by Y height and select an object to return to the map with that object selected.
-Terrain entries reveal their height and clear the previous object selection.
-
-## Glowing Blocks
-
-Map overlays includes a Glowing Blocks switch. Gold stars mark saved treasure
-positions, including buried spots. Clicking a marker inspects that tile; its Height
-layers group and contents dialog include a read-only Glowing Block entry at its Y
-height. Selecting the entry reveals its height without selecting an editable object.
-
-The position table was checked against an in-game spot at X 1006, Y 36, Z 1137 using
-three backed-up states. Breaking the block cleared that position. Collecting the
-resulting disc left the position cleared. Other markers still need in-game testing.
-Reward types and the table's additional fields remain undecoded. Marker display
-uses the saved state, so reload after an in-game save to refresh it.
-
-## Raising ground beneath objects
-
-Ground height has a **Move objects and placed items up** option. When enabled,
-Raise and the raising part of Flatten lift obstructing objects and their stacks
-onto the new surface, preserving their horizontal positions. The choice is remembered.
-Terrain and object movement undo together. A blocked destination cancels the stroke.
-Lowering leaves objects in place. Loose dropped collectibles and Glowing Blocks
-are not moved by this option.
-
-## Rectangular height edits
-
-With Ground height selected, **Shift + drag** marks a rectangle. Release to apply
-the selected Raise, Lower or Flatten mode to every cell in it. Esc cancels before
-release. The object-lifting option applies, and the rectangle is one undo step.
-
-## Panning with the spacebar
-
-Hold **Space + drag** over the map to pan with any tool, including Ground height,
-even after using sidebar controls. Release Space to resume editing.
-
-## Painting rectangles and terrain layers
-
-In **Paint ground**, **Shift + drag** paints a rectangle on release (Esc cancels).
-Enable **Paint all terrain layers below** to paint the surface and existing terrain
-beneath it with the chosen block. Bedrock, liquids, empty spaces, objects and
-buried building blocks are preserved. The checkbox is remembered; brush strokes
-and rectangles each undo as one action. Height limits restrict painting to the
-visible surface and terrain below it.
+For this fork's issues and contributions, use
+[frinimini/Pokopia-Editor-Linux](https://github.com/frinimini/Pokopia-Editor-Linux)
+and follow [CONTRIBUTING.md](CONTRIBUTING.md). Upstream project discussion belongs
+at [cycalo/Pokopia-Editor](https://github.com/cycalo/Pokopia-Editor).
