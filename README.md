@@ -239,29 +239,6 @@ License: `data/fonts/LICENSE-FluentSystemIcons.txt`.
 - Painting all layers replaces terrain resources such as ore. It preserves bedrock,
   water, air, objects and buried building blocks. Try it on a save copy first.
 
-## Upstream editor features
-
-The following capabilities were created by **cycalo and upstream contributors**
-and are inherited by this fork. The Linux additions above build on that work.
-
-| Upstream page | Inherited capabilities |
-|---|---|
-| Overview | Player information, rename tools and one-click unlock actions |
-| Bag and Item Catalog | Inventory editing, item search, icons, categories and quantities |
-| Residents | Friendship, meeting information and resident homes |
-| Moves and Emotes | Learned actions and move/emote wheels |
-| Wardrobe | Outfits, hairstyles and expansion content |
-| Collection | Pokédex, Habitat Dex, recipes, records, artifacts and other collections |
-| Island Map | Place, move and delete objects; edit terrain and paths; create habitats; export maps |
-| Photos | Browse the in-game album and export images |
-| Backups | Create, compare, restore and delete backups |
-| Mods | Play as Pokemon and Unlimited Crafting Storage Range |
-
-For the original page descriptions, mod installation, controller combinations,
-shared shortcuts and Windows source-build instructions, read the
-[upstream editor and mod guide](docs/upstream-guide.md).
-Original Windows downloads remain at [cycalo's releases](https://github.com/cycalo/Pokopia-Editor/releases/latest).
-
 ## Credits, licensing and contributions
 
 - **Original editor and mods:** cycalo and upstream contributors.
@@ -281,3 +258,68 @@ For this fork's issues and contributions, use
 [frinimini/Pokopia-Editor-Linux](https://github.com/frinimini/Pokopia-Editor-Linux)
 and follow [CONTRIBUTING.md](CONTRIBUTING.md). Upstream project discussion belongs
 at [cycalo/Pokopia-Editor](https://github.com/cycalo/Pokopia-Editor).
+
+---
+
+## Upstream editor features
+
+### Original editor by cycalo and contributors
+
+The features, screenshots and animated demos in this section come from
+**[cycalo/Pokopia-Editor](https://github.com/cycalo/Pokopia-Editor)** and its
+contributors, based on upstream editor **1.9.2**. They are included here to show
+the original editor this Linux fork builds on. The Linux additions and screenshots
+above are documented separately.
+
+[Original upstream README](https://github.com/cycalo/Pokopia-Editor/blob/d0dd2f7/README.md) ·
+[Upstream releases and Windows downloads](https://github.com/cycalo/Pokopia-Editor/releases/latest) ·
+[Original editor and mod instructions](docs/upstream-guide.md)
+
+| | Page | |
+|:-:|---|---|
+| 🏠 | **Overview** | Rename your player, see your stats, and use one-click actions: max friendship, learn every emote, unlock the wardrobe |
+| 🎒 | **Bag** | Drag items into your bag, swap slots, copy with Ctrl, set amounts |
+| 📖 | **Item Catalog** | Browse and search every item by category, then double-click to add it. Expansion Pass and event items are tagged and can be filtered |
+| 💛 | **Residents** | Set friendship, see when you met each resident, and find their home on the map |
+| ✨ | **Moves & Emotes** | Learn or unlearn with a click, then set up your move and emote wheels |
+| 👕 | **Wardrobe** | Unlock any outfit or hairstyle, or all of them at once, including the Expansion Pass ones |
+| ⭐ | **Collection** | Complete the Pokédex, Habitat Dex, recipes, item list, Human Records, Ancient Artifacts, Highlight Reel, and photo frames and filters, one at a time or all at once. Turn on upgrades and set your Life Coins |
+| 🗺️ | **Island Map** | Edit your islands: move, place and delete objects, paint paths, raise or flatten the ground, and build any of 252 habitats in one click. Export as PNG |
+| 📷 | **Photos** | Browse your in-game album and export full-size photos |
+| 🛟 | **Backups** | Make, compare, restore and delete backups |
+| 🧩 | **Mods** | Install game mods: Play as Pokemon, Unlimited Crafting Storage Range |
+
+
+### Original upstream screenshots
+
+Images below are the original upstream examples, with upstream example save data.
+Click a screenshot to view it at full size. Attribution remains with cycalo and
+upstream contributors; these are not new screenshots of this Linux fork.
+
+| | |
+|---|---|
+| **Island Map — upstream**<br>[<img src="docs/screenshots/island-map.png" width="440" alt="Original upstream Island Map screenshot">](docs/screenshots/island-map.png) | **Wardrobe — upstream**<br>[<img src="docs/screenshots/wardrobe.png" width="440" alt="Original upstream Wardrobe screenshot">](docs/screenshots/wardrobe.png) |
+| **Residents — upstream**<br>[<img src="docs/screenshots/residents.png" width="440" alt="Original upstream Residents screenshot">](docs/screenshots/residents.png) | **Moves and Emotes — upstream**<br>[<img src="docs/screenshots/moves.png" width="440" alt="Original upstream Moves and Emotes screenshot">](docs/screenshots/moves.png) |
+| **Item Catalog — upstream**<br>[<img src="docs/screenshots/catalog.png" width="440" alt="Original upstream Item Catalog screenshot">](docs/screenshots/catalog.png) | **Collection — upstream**<br>[<img src="docs/screenshots/collection.png" width="440" alt="Original upstream Collection screenshot">](docs/screenshots/collection.png) |
+
+### Original upstream animated demos
+
+These GIF demonstrations are provided by the upstream project. They show the
+original **Play as Pokemon** mod, rather than Linux-fork-specific functionality.
+
+**Transformation demo — upstream Play as Pokemon**
+
+<img src="docs/transform_demo.gif" width="720" alt="Upstream demo: transforming into Mewtwo, Lugia, Heracross and Flareon, then returning to the player">
+
+**Flight demo — upstream Play as Pokemon**
+
+<img src="docs/charizard_fly.gif" width="720" alt="Upstream demo: flying around town as Charizard">
+
+Play as Pokemon supports transformation and selected abilities on the supported
+Pokopia 2.0.0 build. Unlimited Crafting Storage Range uses items from placed storage
+at any distance. These mods were inherited from upstream; their installation,
+controller combinations and limitations are in the
+[upstream editor and mod guide](docs/upstream-guide.md#upstream-mods).
+
+Original project and contributor attribution are retained in [CREDITS.md](CREDITS.md).
+The editor's GPLv3 license and separate third-party notices continue to apply.
